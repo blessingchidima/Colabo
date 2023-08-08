@@ -7,8 +7,13 @@ import { useAutoAnimate } from "@formkit/auto-animate/react";
 const HomeScreen = () => {
   const [task, setTask] = useState("");
   const [parent] = useAutoAnimate();
+<<<<<<< HEAD
   const onHandleChange = (data: any) => {
     data.push(task);
+=======
+  const onHandleChange = (data) => {
+    data?.push(task)
+>>>>>>> e08b4ac129d1622677a8b8bc3a7863960f0ad4de
   };
 
   return (
@@ -22,6 +27,7 @@ const HomeScreen = () => {
               onEnter={onHandleChange}
               placeholder="Enter a task to be executed"
             />
+            <Logout>Logout</Logout>
           </Left>
           <Right>
             <RightMain>
@@ -52,6 +58,18 @@ const HomeScreen = () => {
 };
 
 export default HomeScreen;
+
+
+const Logout = styled.div`
+padding: 10px 20px;
+border-radius: 7px;
+position: absolute;
+background-color: purple;
+font-weight: 600;
+color: white;
+margin-top: 600px;
+margin-left: 150px;
+`;
 
 const Wrapp = styled.div`
   margin-left: 50px;

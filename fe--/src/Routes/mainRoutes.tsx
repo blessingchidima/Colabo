@@ -1,37 +1,34 @@
-
-import {createBrowserRouter} from "react-router-dom"
+import { createBrowserRouter } from "react-router-dom";
 import Layout from "../Components/Common/Layout";
 import Register from "../pages/Auth/Register";
 import Sigin from "../pages/Auth/Sigin";
 import HomeScreen from "../pages/HomeScreen";
-
-
-
+import SignLayout from "../Components/Common/SignLayout";
 
 export const mainRouter = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    element: <SignLayout />,
 
     children: [
-   
-
       {
         path: "/register",
-        element: < Register/>,
+        element: <Register />,
       },
       {
         path: "/signin",
-        element: < Sigin/>,
+        element: <Sigin />,
       },
+    ],
+  },
+  {
+    element: <Layout />,
+    path: "/home",
+    children: [
       {
-        path:"/home",
-        element: <HomeScreen/>
-      }
-   
-    
-    
-     
+        index: true,
+        element: <HomeScreen />
+      },
     ],
   },
 ]);
