@@ -23,7 +23,6 @@
 //     }
 // }
 
-
 // export const deleteTask = async (id: string) => {
 //     try {
 //         return await axios.delete(`${URL}/${id}`).then((res: any) => {
@@ -34,14 +33,10 @@
 //     }
 // }
 
-
-
-import React from 'react'
+import React from "react";
 
 const authApi = () => {
-  return (
-    <div>authApi</div>
-  )
-}
+  return <div>authApi</div>;
+};
 
-export default authApi
+export default authApi;
