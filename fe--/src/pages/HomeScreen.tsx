@@ -5,12 +5,15 @@ import { useState } from "react";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 const HomeScreen = () => {
- 
-
   const [task, setTask] = useState("");
   const [parent] = useAutoAnimate();
+<<<<<<< HEAD
+  const onHandleChange = (data: any) => {
+    data.push(task);
+=======
   const onHandleChange = (data) => {
     data?.push(task)
+>>>>>>> e08b4ac129d1622677a8b8bc3a7863960f0ad4de
   };
 
   return (
@@ -36,53 +39,15 @@ const HomeScreen = () => {
                       <Details>
                         <Name>Kenny</Name>
                         <Task>TaskBar</Task>
-                        <Time>One minute ago</Time>
                       </Details>
+                      <Time>12pm</Time>
                     </Profile>
+
                     <Button>
                       <Icon />
                     </Button>
                   </Card>
                 </div>
-                <Card>
-                  <Profile>
-                    <Img />
-                    <Details>
-                      <Name>Kenny</Name>
-                      <Task>TaskBar</Task>
-                      <Time>One minute ago</Time>
-                    </Details>
-                  </Profile>
-                  <Button>
-                    <Icon />
-                  </Button>
-                </Card>
-                <Card>
-                  <Profile>
-                    <Img />
-                    <Details>
-                      <Name>Kenny</Name>
-                      <Task>TaskBar</Task>
-                      <Time>One minute ago</Time>
-                    </Details>
-                  </Profile>
-                  <Button>
-                    <Icon />
-                  </Button>
-                </Card>
-                <Card>
-                  <Profile>
-                    <Img />
-                    <Details>
-                      <Name>Kenny</Name>
-                      <Task>TaskBar</Task>
-                      <Time>One minute ago</Time>
-                    </Details>
-                  </Profile>
-                  <Button>
-                    <Icon />
-                  </Button>
-                </Card>
               </Wrapp>
             </RightMain>
           </Right>
@@ -135,17 +100,22 @@ const Icon = styled(MdDelete)`
 const Button = styled.div`
   display: flex;
   justify-content: flex-end;
-  margin-top: 15px;
+  margin-top: 25px;
   margin-right: 5px;
   color: #fff;
 `;
 const Time = styled.div`
   font-size: 12px;
+  position: absolute;
   font-weight: 600;
+  margin-top: 180px;
+  margin-left: 100px;
 `;
 const Task = styled.div`
   margin-bottom: 20px;
-  font-size: 16px;
+  font-size: 13px;
+  width: 250px;
+  height: 80px;
 `;
 const Details = styled.div`
   padding-left: 7px;
@@ -156,8 +126,8 @@ const Details = styled.div`
   /* background-color: red; */
 `;
 const Name = styled.div`
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 700;
   margin-top: 4px;
   margin-bottom: 3px;
 `;
@@ -172,7 +142,7 @@ const Profile = styled.div`
   display: flex;
   align-items: center;
   height: 50px;
-  margin-top: 25px;
+  margin-top: 35px;
   padding-left: 10px;
   /* color: white; */
 `;
