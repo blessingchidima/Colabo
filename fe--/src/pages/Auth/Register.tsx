@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import avatar from "../../assets/avatar.png";
+// import avatar from "../../assets/avatar.png";
 import { useState } from "react";
 // import { AiOutlineEyeInvisible } from "react-icons/ai";
 import { useForm } from "react-hook-form";
@@ -279,14 +279,14 @@ const ImageInput = styled.input`
   display: none;
 `;
 
-const Img = styled.img`
-  height: 80px;
-  width: 80px;
-  border-radius: 50%;
-  border: 1px solid #52bbff;
-  margin-top: -10px;
-  margin-bottom: 10px;
-`;
+// const Img = styled.img`
+//   height: 80px;
+//   width: 80px;
+//   border-radius: 50%;
+//   border: 1px solid #52bbff;
+//   margin-top: -10px;
+//   margin-bottom: 10px;
+// `;
 // const ImageHolder = styled.div`
 
 // `
@@ -338,9 +338,8 @@ const Card = styled.div`
   margin: 20px;
   display: flex;
   justify-content: center;
-  margin-top
-  /* align-items: center; */
-`;
+  
+ `;
 const Main = styled.div`
   width: 700px;
   height: 550px;
