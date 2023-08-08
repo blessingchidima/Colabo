@@ -1,10 +1,11 @@
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import avatar from "../../assets/avatar.png";
+import { useState } from "react";
 // import { AiOutlineEyeInvisible } from "react-icons/ai";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -25,9 +26,26 @@ const Register = () => {
     resolver: yupResolver(Schema),
   });
 
+  const [avatar, setAvatar] = useState("");
+  const [image, setImage] = useState(avatar);
+
+  const onHandleImage = (e:any) => {
+    try {
+      const file = e.target.files[0];
+      const realImage = URL.createObjectURL(file);
+      setImage(realImage);
+      setAvatar(file);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const onHandleSubmit = handleSubmit(async (data) => {
-    const { name, email, password, confirm } = data;
-    console.log(data);
+    const { name, email, password, lastname } = data;
+    const formData = new FormData();
+    formData.append("email", email);
+    formData.append("name", name);
+    formData.append("lastname", lastname);
+    formData.append("password", password);
     navigate("/signin");
     reset();
   });
@@ -40,9 +58,13 @@ const Register = () => {
             <Left>
               <Top>
                 <Text>Register</Text>
-                <Img />
+                {/* <Img />  */}
                 <ImageInput />
-                <ImageLabel>Upload Image</ImageLabel>
+                <ImageHolder>
+                  <Image src={image} />
+                  <ImageInput id="img1" type="file" onChange={onHandleImage} />
+                  <ImageLabel htmlFor="img1">Upload Image</ImageLabel>
+                </ImageHolder>
               </Top>
 
               <Bottom>
@@ -76,7 +98,7 @@ const Register = () => {
 
                 <Button type="submit">Register</Button>
                 <Txt>
-                  Already have an account? <span>Sign in</span>
+                  Already have an account? <Sign to="/signin">Sign in</Sign>
                 </Txt>
               </Bottom>
             </Left>
@@ -103,6 +125,29 @@ const Register = () => {
 
 export default Register;
 
+const Sign = styled(NavLink)`
+text-decoration: none;
+color: red;
+font-weight: 600;
+`;
+
+const Image = styled.img`
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  background-color: white;
+`;
+
+const ImageHolder = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`;
+
 const Second = styled.div`
   display: flex;
 `;
@@ -127,9 +172,6 @@ const Error = styled.div`
 
 // const Btn = styled.div``
 
-const NavLinks = styled(NavLink)`
-  text-decoration: none;
-`;
 const Txt = styled.div`
   font-size: 14px;
   margin-top: 10px;
@@ -155,7 +197,7 @@ const Button = styled.button`
   background-color: #fb2676;
   color: #fff;
   border-radius: 4px;
-  margin-top: 10px;
+  margin-top: 20px;
   font-weight: 600;
   outline: none;
   border: none;
@@ -210,7 +252,7 @@ const Input = styled.input`
   background: transparent;
   color: white;
 
-  ::placeholder{
+  ::placeholder {
     color: white;
   }
 `;
@@ -235,7 +277,6 @@ const ImageLabel = styled.label`
 `;
 const ImageInput = styled.input`
   display: none;
-
 `;
 
 const Img = styled.img`
@@ -297,11 +338,14 @@ const Card = styled.div`
   margin: 20px;
   display: flex;
   justify-content: center;
+  margin-top
   /* align-items: center; */
 `;
 const Main = styled.div`
   width: 700px;
   height: 550px;
+  display: flex;
+  align-items: center;
   border-radius: 30px;
   background: linear-gradient(145deg, #121519, #111417 67%, #5f0b2b);
 `;

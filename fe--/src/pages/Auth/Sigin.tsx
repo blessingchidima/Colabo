@@ -24,6 +24,9 @@ const Sigin = () => {
 
   const onHandleSubmit = handleSubmit(async (data) => {
     const { email, password } = data;
+    const formData = new FormData();
+    formData.append("email", email);
+    formData.append("password", password);
     console.log(data);
     navigate("/home");
     reset();
@@ -35,27 +38,25 @@ const Sigin = () => {
         <Main>
           <Card onSubmit={onHandleSubmit}>
             <Left>
-              <Top>
-               Login
-              </Top>
+              <Top>Login</Top>
 
               <Bottom>
                 {/* <Hold> */}
-                  <InputHolder>
-                    <Input placeholder="Email" {...register("email")} />
-                    {errors.email && <Error>email error</Error>}
-                  </InputHolder>
-                 
+                <InputHolder>
+                  <Input placeholder="Email" {...register("email")} />
+                  {errors.email && <Error>email error</Error>}
+                </InputHolder>
+
                 {/* </Hold> */}
                 <InputHolder>
-                    <Input placeholder="Password" {...register("password")} />
-                    {errors.password && <Error>password error</Error>}
-                  </InputHolder>
+                  <Input placeholder="Password" {...register("password")} />
+                  {errors.password && <Error>password error</Error>}
+                </InputHolder>
                 <Second></Second>
 
                 <Button type="submit">Signin</Button>
                 <Txt>
-                  Already have an account? <span>Sign in</span>
+                  Don't have an account? <Sign to="/register">Signup</Sign>
                 </Txt>
               </Bottom>
             </Left>
@@ -63,14 +64,16 @@ const Sigin = () => {
               <About>
                 <Header>Welcome back, Friend</Header>
                 <Parag>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis
-                  nobis velit natus aperiam.
+                  Write down your tasks as we help you <br />
+                  get them done, faster, and stressfree.
                 </Parag>
               </About>
 
               <Acc>
-                <TextAcc>Don't have an account <span>Signup</span></TextAcc>
-                <Button1>Login</Button1>
+                <TextAcc>
+                  Don't have an account? <Sign to="/register">Signup</Sign>
+                </TextAcc>
+                {/* <Button1>Login</Button1> */}
               </Acc>
             </Right>
           </Card>
@@ -82,16 +85,15 @@ const Sigin = () => {
 
 export default Sigin;
 
-const Second = styled.div`
-  display: flex;
+const Sign = styled(NavLink)`
+  color: red;
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 5px;
 `;
 
-const Hold = styled.div`
+const Second = styled.div`
   display: flex;
-  justify-content: space-between;
-  width: 80%;
-  height: 50px;
-  align-items: center;
 `;
 
 const Error = styled.div`
@@ -106,7 +108,6 @@ const Error = styled.div`
 
 // const Btn = styled.div``
 
-
 const Txt = styled.div`
   font-size: 14px;
   margin-top: 10px;
@@ -118,21 +119,14 @@ const Txt = styled.div`
     margin-left: 5px;
   }
 `;
-const Button1 = styled.button`
-  width: 200px;
-  height: 30px;
-  border: 1px solid #fff;
-  font-weight: 600;
-  color: #fb2676;
-  border-radius: 4px;
-`;
+
 const Button = styled.button`
   width: 200px;
   height: 30px;
   background-color: #fb2676;
   color: #fff;
   border-radius: 4px;
-  margin-top: 10px;
+  margin-top: 20px;
   font-weight: 600;
   outline: none;
   border: none;
@@ -142,11 +136,8 @@ const TextAcc = styled.div`
   font-size: 12px;
   font-weight: 500;
   margin-bottom: 10px;
+  color: white;
   text-align: center;
-
-  span{
-    margin-left: 10px;
-  }
 `;
 const Parag = styled.div`
   text-align: center;
@@ -253,7 +244,7 @@ const Left = styled.div`
 `;
 const Card = styled.div`
   width: 90%;
-  height: 400px;
+  height: 350px;
   margin: 20px;
   display: flex;
   justify-content: center;
@@ -261,10 +252,11 @@ const Card = styled.div`
 `;
 const Main = styled.div`
   width: 700px;
-  height: 500px;
+  height: 450px;
   border-radius: 30px;
   display: flex;
   align-items: center;
+  justify-content: center;
   background: linear-gradient(145deg, #121519, #111417 67%, #5f0b2b);
 `;
 const Container = styled.div`
