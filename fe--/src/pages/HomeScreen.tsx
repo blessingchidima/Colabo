@@ -9,8 +9,8 @@ const HomeScreen = () => {
 
   const [task, setTask] = useState("");
   const [parent] = useAutoAnimate();
-  const onHandleChange = (data:any) => {
-    data.push(task)
+  const onHandleChange = (data) => {
+    data?.push(task)
   };
 
   return (
@@ -24,6 +24,7 @@ const HomeScreen = () => {
               onEnter={onHandleChange}
               placeholder="Enter a task to be executed"
             />
+            <Logout>Logout</Logout>
           </Left>
           <Right>
             <RightMain>
@@ -92,6 +93,18 @@ const HomeScreen = () => {
 };
 
 export default HomeScreen;
+
+
+const Logout = styled.div`
+padding: 10px 20px;
+border-radius: 7px;
+position: absolute;
+background-color: purple;
+font-weight: 600;
+color: white;
+margin-top: 600px;
+margin-left: 150px;
+`;
 
 const Wrapp = styled.div`
   margin-left: 50px;

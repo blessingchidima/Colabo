@@ -29,7 +29,7 @@ const Register = () => {
   const [avatar, setAvatar] = useState("");
   const [image, setImage] = useState(avatar);
 
-  const onHandleImage = (e:any) => {
+  const onHandleImage = (e: any) => {
     try {
       const file = e.target.files[0];
       const realImage = URL.createObjectURL(file);
